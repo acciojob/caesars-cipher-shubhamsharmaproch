@@ -36,11 +36,14 @@ function rot13(encodedStr) {
 	for(let i=0;i<encodedStr.length;i++) {
 		const charCode=encodedStr.charCodeAt(i);
 		if(charCode>=65 && charCode<=90) {
-			decodedArr=charCode+13;
+			decodedArr=charCode-13;
+			if(decodedArr<65){
+				decodedArr+=26;
+			}
 		} else {
 			decodedArr+=encodedStr.charAt(i);
 		}
-		decodedArr=String.fromcharCode(decodedArr);
+		decodedArr+=String.fromcharCode(decodedArr);
 		
 	}
 	return decodedArr;
